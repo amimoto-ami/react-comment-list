@@ -6,7 +6,7 @@
   "dependencies": {
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "superagent": "^1.8.3"
+    "whatwg-fetch": "^1.0.0"
   },
   "private": false,
   "jest": {
@@ -33,13 +33,13 @@
     "start": "webpack-dev-server",
     "test": "jest",
     "build": "node ./node_modules/webpack/bin/webpack.js",
-	"prepublish": "npm run build"
+    "prepublish": "npm run build"
   },
   "license": "MIT",
   "author": "hideokamoto",
   "keywords": [
-		"react-component",
-		"wordpress",
-		"wp-rest-api"
-	]
+    "react-component",
+    "wordpress",
+    "wp-rest-api"
+  ]
 }
