@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class CommentList extends React.Component {
+class CommentBox extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -23,7 +23,7 @@ if ( target != null ) {
 	var post_id = target.getAttribute('data-post-id')
 	var interval = target.getAttribute('data-interval')
 	ReactDOM.render(
-		<CommentList
+		<CommentBox
 			post_id={post_id}
 			domain={domain}
 			interval={interval}/>,
