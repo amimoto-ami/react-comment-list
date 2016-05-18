@@ -3,7 +3,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class CommentList extends React.Component {
-
 	constructor(props) {
 		super(props);
 	}
@@ -22,8 +21,12 @@ var target = document.getElementById('amimoto-ninja-comment-list');
 if ( target != null ) {
 	var domain  = target.getAttribute('data-domain')
 	var post_id = target.getAttribute('data-post-id')
+	var interval = target.getAttribute('data-interval')
 	ReactDOM.render(
-		<CommentList post_id={post_id} domain={domain}/>,
+		<CommentList
+			post_id={post_id}
+			domain={domain}
+			interval={interval}/>,
 		target
 	)
 }
