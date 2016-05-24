@@ -32,13 +32,15 @@ class CommentBox extends React.Component {
 		}
 	}
 
-	loadCommentsFromServer() {
-		var self = this;
-
-		fetch(this.props.api)
+	loadCommentsFromServer( self ) {
+		var domain  = target.getAttribute('data-domain')
+		var post_id = target.getAttribute('data-post-id')
+		var api = domain + '/wp-json/wp/v2/comments?post=' + post_id;
+		fetch(api)
 			.then(function(res){
 				return res.json();
 			}).then(function(json){
+				console.log(json)
 				self.setState({
 					comments: json
 				})
@@ -46,8 +48,8 @@ class CommentBox extends React.Component {
 	}
 
 	componentDidMount() {
-		this.loadCommentsFromServer();
-		setInterval( this.loadCommentsFromServer, this.props.interval );
+		this.loadCommentsFromServer( this );
+		setInterval( () => { this.loadCommentsFromServer( this )}, this.props.interval );
 	}
 
 	render() {
@@ -65,13 +67,9 @@ class CommentBox extends React.Component {
 
 var target = document.getElementById('amimoto-ninja-comment-list');
 if ( target != null ) {
-	var domain  = target.getAttribute('data-domain')
-	var post_id = target.getAttribute('data-post-id')
 	var interval = target.getAttribute('data-interval')
-	var api = domain + '/wp-json/wp/v2/comments?post=' + post_id;
 	ReactDOM.render(
 		<CommentBox
-			api={api}
 			interval={interval}/>,
 		target
 	)
